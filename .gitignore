@@ -1,0 +1,56 @@
+#
+# For a good template, see https://github.com/github/gitignore/blob/master/Python.gitignore
+#
+
+# Generated & compiled files
+*.py[cod]
+MANIFEST
+_version.py
+
+# C extensions
+*.so
+*.o
+
+# Packages
+*.egg*
+*.egg-info
+dist
+build
+CMakeFiles
+eggs
+parts
+bin
+var
+sdist
+target
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+# Unit test / coverage reports
+.coverage
+.tox
+.cache
+
+# Editors
+*~
+*#
+.#*
+*.sublime-workspace
+.*.sw[pon]
+.doctrees
+.mr.developer.cfg
+.project
+.pydevproject
+.settings
+.idea*
+*.private.env.json
+
+# Transient files
+.nfs*
+SyncToy*
+
+# Sphynx doc detritus
+_build
+_themes
