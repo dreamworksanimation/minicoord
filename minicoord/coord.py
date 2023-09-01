@@ -76,7 +76,7 @@ class Coord(object):
         """ called when a new Node registers via the REST API"""
         node = Node(self,node_data)
         self.nodes[node.id] = node
-        logger.info("Registered new node {} on {}".format(short_id(node.id),node.hostname))
+        logger.info("Registered new node {} on {} : {} cores".format(short_id(node.id),node.hostname,node.resources.total.cores))
 
     def unregister_node_request(self,node_id):
         """ called when a node unregisters via the REST API"""

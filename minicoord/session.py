@@ -38,6 +38,7 @@ class Computation(object):
                     cores = (resource_req.get('minCores',1),
                             resource_req.get('maxCores','*'))
             self.required_resources = allocate.RequiredResources(cores,memory)
+            self.hostname_pin = config.get('requirements',{}).get('hostname_pin')
         self.assigned_resources = None
         self.exit_kills_session = False
 

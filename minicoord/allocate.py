@@ -76,8 +76,10 @@ class Allocation(object):
 
     def __init__(self,session):
         self.nodes = {}  # node_id => NodeResources
+        self.hostnames = {} # node_id => hostname
         for node in session.coord.nodes.values():
             self.nodes[node.id] = copy.copy(node.resources)
+            self.hostnames[node.id] = node.hostname
         self.comps = {}  # comp_id => (node_id,Resources)
 
     def apply(self,session):
@@ -90,6 +92,9 @@ class Allocation(object):
     def allocate(self,c):
         for (n,r) in self.nodes.items():
             if r.satisfies(c.required_resources):
+                if c.hostname_pin and c.hostname_pin != self.hostnames[n]:
+                    logger.info("Not allocating node {} to computation {} because of hostname pin ({} != {})".format(short_id(n),c.name,self.hostnames[n],c.hostname_pin))
+                    continue
                 resources = r.assign(c)
                 self.comps[c.id] = (n,resources)
                 logger.info("Allocated node {} ({} cores, {} Mb) to computation {} id {}".format(short_id(n),resources.cores, resources.memory, c.name,short_id(c.id)))
