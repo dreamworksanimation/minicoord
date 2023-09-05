@@ -3,6 +3,7 @@
 
 import uuid
 import logging
+import copy
 
 logger = logging.getLogger("session")
 
@@ -223,9 +224,9 @@ class Session(object):
                 node_configs[c.node_id] = node_config
                 nodes[node.id] = node.make_routing_config()
 
-            assigned_config = c.config.copy()
+            assigned_config = copy.deepcopy(c.config)
             assigned_config.setdefault('requirements',{}).setdefault('resources',{})['cores'] = c.assigned_resources.cores
-            assigned_config['requirements']['resources']['memoryMB'] = c.assigned_resources.cores
+            assigned_config['requirements']['resources']['memoryMB'] = c.assigned_resources.memory
             node_config['config']['computations'][c.name] = assigned_config
             entry = c.config.get('entry')
             if entry == True or entry == "yes" or self.entry_id is None:
