@@ -5,5 +5,5 @@ full version, and lacks some of the more advanced machine allocation features, b
 to demonstrate Arras multi-machine execution of Moonray.
 
 This repository is part of the larger MoonRay/Arras codebase.  It is included as a submodule in the top-level
-OpenMoonRay repository located here: [OpenMoonRay](https://github.com/dreamworksanimation/openmoonray)
+OpenMoonRay repository located here: [OpenMoonRay](https://github.com/OpenMoonRay/openmoonray)
 
